@@ -22,7 +22,7 @@ class CartCountBubble extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontSize: SizeConfig.scaledFontSize(10),
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),
