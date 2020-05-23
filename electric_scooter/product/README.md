@@ -1,6 +1,8 @@
 # product
 
-A new Flutter project.
+Flutter code for the design below.
+
+![design](/electric_scooter/design.png)
 
 ## Getting Started
 
