@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 import 'package:product/common/custom_colors.dart';
 import 'package:product/common/images.dart';
 import 'package:product/common/size_config.dart';
@@ -32,6 +33,10 @@ class _ProductDetailsState extends State<ProductDetails> {
 
     _cartCount = widget.cartCount;
     _product = widget.product;
+  }
+
+  String formatPrice(){
+    return NumberFormat.simpleCurrency().format(_product.price);
   }
 
   @override
@@ -190,31 +195,36 @@ class _ProductDetailsState extends State<ProductDetails> {
           left: SizeConfig.scaledWidth(20),
           right: SizeConfig.scaledWidth(20),
           bottom: SizeConfig.scaledWidth(30),
-          top: SizeConfig.scaledWidth(40),
+          top: SizeConfig.scaledWidth(10),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'Total price',
-                  style: TextStyle(
-                    color: Colors.white54,
-                    fontSize: SizeConfig.scaledFontSize(14),
-                    fontWeight: FontWeight.w500,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Total price',
+                    style: TextStyle(
+                      color: Colors.white54,
+                      fontSize: SizeConfig.scaledFontSize(14),
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
-                Text(
-                  _product.price,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: SizeConfig.scaledFontSize(26),
-                    fontWeight: FontWeight.w700,
+                  Text(
+                    formatPrice(),
+                    // '\$${_product.price.toString()}',
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: SizeConfig.scaledFontSize(26),
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             _buyBtn,
           ],
@@ -225,64 +235,67 @@ class _ProductDetailsState extends State<ProductDetails> {
     return Scaffold(
       backgroundColor: CustomColors.primaryColor,
       body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: SizeConfig.scaledWidth(15),
-                vertical: SizeConfig.scaledHeight(20),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(SizeConfig.scaledWidth(20)),
-                  bottomRight: Radius.circular(SizeConfig.scaledWidth(20)),
+        child: Container(
+          color: CustomColors.primaryColor,
+          child: Column(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.scaledWidth(15),
+                  vertical: SizeConfig.scaledHeight(20),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(SizeConfig.scaledWidth(20)),
+                    bottomRight: Radius.circular(SizeConfig.scaledWidth(20)),
+                  ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: SvgPicture.asset(
+                        Images.BACK,
+                        height: SizeConfig.scaledHeight(24),
+                      ),
+                    ),
+                    TextHeader(
+                      text: '${_product.model} Details',
+                    ),
+                    Cart(
+                      count: _cartCount,
+                    ),
+                  ],
                 ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: SvgPicture.asset(
-                      Images.BACK,
-                      height: SizeConfig.scaledHeight(24),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      top: SizeConfig.scaledWidth(30),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        SizedBox(height: SizeConfig.scaledHeight(10)),
+                        _specificationSection(),
+                        SizedBox(height: SizeConfig.scaledHeight(40)),
+                        _technicalDataSection(),
+                        SizedBox(height: SizeConfig.scaledHeight(40)),
+                        _keyFeaturesSection(),
+                        // SizedBox(height: SizeConfig.scaledHeight(60)),
+                        // _purchaseSection()
+                      ],
                     ),
                   ),
-                  TextHeader(
-                    text: '${_product.model} Details',
-                  ),
-                  Cart(
-                    count: _cartCount,
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                    vertical: SizeConfig.scaledWidth(30),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      SizedBox(height: SizeConfig.scaledHeight(10)),
-                      _specificationSection(),
-                      SizedBox(height: SizeConfig.scaledHeight(40)),
-                      _technicalDataSection(),
-                      SizedBox(height: SizeConfig.scaledHeight(40)),
-                      _keyFeaturesSection(),
-                      // SizedBox(height: SizeConfig.scaledHeight(60)),
-                      // _purchaseSection()
-                    ],
-                  ),
                 ),
               ),
-            ),
-            //SizedBox(height: SizeConfig.scaledHeight(60)),
-            _purchaseSection()
-          ],
+              //SizedBox(height: SizeConfig.scaledHeight(60)),
+              _purchaseSection()
+            ],
+          ),
         ),
       ),
     );

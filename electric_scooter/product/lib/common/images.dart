@@ -10,5 +10,8 @@ class Images {
   static const String TAILLIGHTS = 'assets/images/taillights.jpg';
   static const String BRAKES = 'assets/images/brakes.png';
   static const String BATTERY = 'assets/images/battery.jpg';
+  static const String PREVIEW_1 = 'assets/images/sc1.png';
+  static const String PREVIEW_2 = 'assets/images/sc2.png';
+  static const String PREVIEW_3 = 'assets/images/sc3.png';
   
 }

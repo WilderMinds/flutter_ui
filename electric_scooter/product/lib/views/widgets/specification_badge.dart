@@ -6,24 +6,33 @@ class SpecificationBadge extends StatelessWidget {
   final String name;
   final String value;
   final BadgeType badgeType;
+  final double height;
 
-  const SpecificationBadge({
+  SpecificationBadge({
     @required this.name,
     @required this.value,
     @required this.badgeType,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: SizeConfig.scaledWidth(100),
+      width: badgeType == BadgeType.OUTLINE
+          ? SizeConfig.scaledWidth(85)
+          : SizeConfig.scaledWidth(100),
+      height: badgeType == BadgeType.OUTLINE ? height : null,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color:
+            badgeType == BadgeType.OUTLINE ? Colors.transparent : Colors.white,
         borderRadius: BorderRadius.circular(
-          SizeConfig.scaledWidth(10),
+          SizeConfig.scaledWidth(15),
         ),
         border: badgeType == BadgeType.OUTLINE
-            ? Border.all(width: 1, color: Colors.grey)
+            ? Border.all(
+                width: 1,
+                color: Colors.black12,
+              )
             : Border(),
       ),
       child: Column(
@@ -40,9 +49,9 @@ class SpecificationBadge extends StatelessWidget {
           ),
           Text(
             name,
-             style: TextStyle(
+            style: TextStyle(
               color: CustomColors.greyTextColor,
-              fontSize: SizeConfig.scaledFontSize(14),
+              fontSize: SizeConfig.scaledFontSize(12),
               fontWeight: FontWeight.w600,
             ),
           ),
