@@ -1,6 +1,8 @@
 # music_player
 
-A new Flutter project.
+Flutter code for the design below.
+
+![design](product_design/design.png)
 
 ## Getting Started
 
