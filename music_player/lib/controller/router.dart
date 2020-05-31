@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:music_player/common/size_config.dart';
+import 'package:music_player/model/music.dart';
 import 'package:music_player/views/pages/home.dart';
+import 'package:music_player/views/pages/landing.dart';
 import 'package:music_player/views/pages/now_playing.dart';
 
 class Router {
@@ -20,7 +22,10 @@ class Router {
               return OrientationBuilder(
                 builder: (context, orientation) {
                   SizeConfig().init(context, constraints, orientation);
-                  return Home();
+                  return Landing();
+                  // Home(
+                  //   key: UniqueKey(),
+                  // );
                 },
               );
             },
@@ -37,10 +42,14 @@ class Router {
         break;
 
       case nowPlayingRoute:
+        var data = settings.arguments as List;
         return MaterialPageRoute(
           settings: settings,
           builder: (_) {
-            return NowPlaying();
+            return NowPlaying(
+              music: data[0],
+              isPlaying: data[1],
+            );
           },
         );
         break;
