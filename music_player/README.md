@@ -1,12 +1,11 @@
 # music_player
 
 Flutter code for the design below.
+Design credit: Brenon Kalu
 
 ![design](product_design/design.png)
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
 
