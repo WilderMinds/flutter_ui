@@ -77,7 +77,8 @@ class _NowPlayingState extends State<NowPlaying> {
             vertical: SizeConfig.scaledHeight(20),
           ),
           child: Material(
-            elevation: SizeConfig.scaledHeight(5),
+            color: Colors.transparent,
+            elevation: SizeConfig.scaledHeight(8),
             borderRadius: BorderRadius.circular(
               SizeConfig.scaledWidth(25),
             ),

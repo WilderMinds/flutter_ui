@@ -134,8 +134,11 @@ class _HomeState extends State<Home> {
     );
 
     final _nowPlayingSection = Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: SizeConfig.scaledWidth(20),
+      margin: EdgeInsets.fromLTRB(
+        SizeConfig.scaledWidth(20),
+        0,
+        SizeConfig.scaledWidth(20),
+        SizeConfig.scaledWidth(20),
       ),
       padding: EdgeInsets.symmetric(
         horizontal: SizeConfig.scaledWidth(7),

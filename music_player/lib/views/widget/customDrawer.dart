@@ -33,7 +33,7 @@ class CustomDrawerState extends State<CustomDrawer>
     // init animattion controller
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 300),
+      duration: Duration(milliseconds: 200),
     );
 
     super.initState();
@@ -114,12 +114,13 @@ class CustomDrawerState extends State<CustomDrawer>
                   borderRadius: BorderRadius.circular(
                     SizeConfig.scaledWidth(30),
                   ),
-                  clipBehavior: Clip.antiAlias,
+                  color: Colors.transparent,
+                  clipBehavior: slide == maxSlide ? Clip.antiAlias : Clip.none,
                   child: Container(
                     decoration: BoxDecoration(
-                      // borderRadius: BorderRadius.circular(
-                      //   SizeConfig.scaledWidth(30),
-                      // ),
+                      borderRadius: BorderRadius.circular(
+                        SizeConfig.scaledWidth(30),
+                      ),
                       // boxShadow: <BoxShadow>[
                       //   BoxShadow(
                       //     color: Colors.black54,

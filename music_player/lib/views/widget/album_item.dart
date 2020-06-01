@@ -40,7 +40,9 @@ class _AlbumItemState extends State<AlbumItem> {
           ),
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.white54,
+            color: _music.isFavorite
+                ? CustomColors.accentColor.withOpacity(.5)
+                : Colors.white.withOpacity(.5),
           ),
           child: Icon(
             Icons.favorite,
