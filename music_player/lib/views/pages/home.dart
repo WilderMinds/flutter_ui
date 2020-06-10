@@ -261,11 +261,11 @@ class _HomeState extends State<Home> {
                 child: Column(
                   children: <Widget>[
                     Divider(),
-                    SizedBox(height: SizeConfig.scaledHeight(5)),
+                    SizedBox(height: SizeConfig.scaledHeight(8)),
                     FavoriteMusic(
                       music: _music,
                     ),
-                    SizedBox(height: SizeConfig.scaledHeight(5)),
+                    SizedBox(height: SizeConfig.scaledHeight(8)),
                     Visibility(
                       visible: index == _favoritesList.length - 1,
                       child: Divider(),

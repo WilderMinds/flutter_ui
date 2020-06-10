@@ -5,6 +5,10 @@ Design credit: Brenon Kalu
 
 ![design](product_design/design.png)
 
+
+## Demo
+![demo](product_design/demo.gif)
+
 ## Getting Started
 
 A few resources to get you started if this is your first Flutter project:

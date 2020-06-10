@@ -16,7 +16,6 @@ class _FavoriteMusicState extends State<FavoriteMusic> {
   Music _music;
   bool _isPlaying = false;
   bool _isSelected = false;
-  
 
   @override
   void initState() {
@@ -92,7 +91,9 @@ class _FavoriteMusicState extends State<FavoriteMusic> {
             ],
           ),
           Text(
-            '${_music.artist}',
+            _music.albumTitle == null || _music.albumTitle.isEmpty
+                ? '${_music.artist}'
+                : '${_music.artist} - ${_music.albumTitle}',
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
