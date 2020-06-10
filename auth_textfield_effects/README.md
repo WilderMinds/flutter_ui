@@ -1,7 +1,6 @@
 # auth_textfield_effects
 
 Flutter code the product design below
-(**incomplete!**)
 
 ![design](product_design/design.png)
 

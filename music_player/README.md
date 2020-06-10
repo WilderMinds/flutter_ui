@@ -1,7 +1,10 @@
 # music_player
 
 Flutter code for the design below.
+
 Design credit: Brenon Kalu
+
+(**Incomplete. Check demo below for progress**)
 
 ![design](product_design/design.png)
 

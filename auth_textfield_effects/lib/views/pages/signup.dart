@@ -116,7 +116,7 @@ class _SignupState extends State<Signup> {
                         style: TextStyle(
                           color: CustomColors.headerTextColor,
                           fontSize: SizeConfig.scaledFontSize(28),
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w800,
                         ),
                       ),
                       SizedBox(height: SizeConfig.scaledHeight(30)),

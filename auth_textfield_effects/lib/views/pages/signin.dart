@@ -87,8 +87,8 @@ class _SigninState extends State<Signin> {
                         'Welcome Back',
                         style: TextStyle(
                           color: CustomColors.headerTextColor,
-                          fontSize: SizeConfig.scaledFontSize(24),
-                          fontWeight: FontWeight.w700,
+                          fontSize: SizeConfig.scaledFontSize(26),
+                          fontWeight: FontWeight.w800,
                         ),
                       ),
                       SizedBox(height: SizeConfig.scaledHeight(30)),
