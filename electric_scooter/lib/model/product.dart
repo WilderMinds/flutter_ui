@@ -6,8 +6,8 @@ class Product {
   String maxSpeed = '30';
   String range = '28';
   int price = 499;
-  String weight = '18.5 kg';
-  String height = '114 cm';
+  String weight = '18.5';
+  String height = '114';
   String power = '300';
-  String chargeTime = '8h';
+  String chargeTime = '8';
 }

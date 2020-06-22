@@ -5,8 +5,8 @@ Flutter code for the design below.
 ![design](product_design/design.png)
 
 
-## Demo
-![demo](product_design/demo.gif)
+## Demo (with defualt page route & with custom page route)
+![demo](product_design/demo.gif)    ![demo](product_design/demo2.gif)
 
 ## Getting Started
 

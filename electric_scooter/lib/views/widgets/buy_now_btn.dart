@@ -8,27 +8,30 @@ class BuyNowButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        vertical: SizeConfig.scaledHeight(12),
-        horizontal: SizeConfig.scaledWidth(27),
+    return Material(
+      clipBehavior: Clip.antiAlias,
+      borderRadius: BorderRadius.circular(
+        SizeConfig.scaledWidth(10),
       ),
-      decoration: BoxDecoration(
-        color: btnType == BuyBtnType.PRIMARY
-            ? CustomColors.primaryColor
-            : Colors.white,
-        borderRadius: BorderRadius.circular(
-          SizeConfig.scaledWidth(10),
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: SizeConfig.scaledHeight(12),
+          horizontal: SizeConfig.scaledWidth(27),
         ),
-      ),
-      child: Text(
-        'BUY NOW',
-        style: TextStyle(
-         color: btnType == BuyBtnType.PRIMARY
-            ? Colors.white
-            : CustomColors.primaryColor,
-          fontSize: SizeConfig.scaledFontSize(18),
-          fontWeight: FontWeight.w800,
+        decoration: BoxDecoration(
+          color: btnType == BuyBtnType.PRIMARY
+              ? CustomColors.primaryColor
+              : Colors.white,
+        ),
+        child: Text(
+          'BUY NOW',
+          style: TextStyle(
+            color: btnType == BuyBtnType.PRIMARY
+                ? Colors.white
+                : CustomColors.primaryColor,
+            fontSize: SizeConfig.scaledFontSize(18),
+            fontWeight: FontWeight.w800,
+          ),
         ),
       ),
     );

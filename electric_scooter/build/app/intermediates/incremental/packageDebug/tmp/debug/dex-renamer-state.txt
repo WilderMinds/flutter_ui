@@ -1,4 +1,4 @@
-#Sun May 24 23:36:43 GMT 2020
-base.0=/Users/samexpresspay/flutter_projects/Honline/flutter_ui/electric_scooter/product/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+#Sun Jun 21 23:25:24 GMT 2020
+base.0=/Users/samexpresspay/flutter_projects/Honline/flutter_ui/electric_scooter/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

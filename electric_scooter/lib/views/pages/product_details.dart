@@ -35,7 +35,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     _product = widget.product;
   }
 
-  String formatPrice(){
+  String formatPrice() {
     return NumberFormat.simpleCurrency().format(_product.price);
   }
 
@@ -104,11 +104,11 @@ class _ProductDetailsState extends State<ProductDetails> {
       children: <Widget>[
         TechnicalItem(name: 'Model', value: _product.model),
         SizedBox(height: SizeConfig.scaledHeight(10)),
-        TechnicalItem(name: 'Weight', value: _product.weight),
+        TechnicalItem(name: 'Weight', value: '${_product.weight} kg'),
         SizedBox(height: SizeConfig.scaledHeight(10)),
-        TechnicalItem(name: 'Height', value: _product.height),
+        TechnicalItem(name: 'Height', value: '${_product.height} cm'),
         SizedBox(height: SizeConfig.scaledHeight(10)),
-        TechnicalItem(name: 'Charge time', value: _product.chargeTime),
+        TechnicalItem(name: 'Charge time', value: '${_product.chargeTime}h'),
       ],
     );
 
@@ -184,8 +184,11 @@ class _ProductDetailsState extends State<ProductDetails> {
 
     final _buyBtn = GestureDetector(
       onTap: () {},
-      child: BuyNowButton(
-        btnType: BuyBtnType.SECONDARY,
+      child: Hero(
+        tag: 'buyNow',
+        child: BuyNowButton(
+          btnType: BuyBtnType.SECONDARY,
+        ),
       ),
     );
 

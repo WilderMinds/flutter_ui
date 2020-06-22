@@ -6,10 +6,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:intl/intl.dart';
 import 'package:product/common/custom_colors.dart';
+import 'package:product/common/fade_page_route.dart';
 import 'package:product/common/images.dart';
 import 'package:product/common/size_config.dart';
+import 'package:product/common/slide_page_route.dart';
 import 'package:product/controller/router.dart';
 import 'package:product/model/product.dart';
+import 'package:product/views/pages/product_details.dart';
 import 'package:product/views/widgets/buy_now_btn.dart';
 import 'package:product/views/widgets/cart.dart';
 import 'package:product/views/widgets/cart_count_bubble.dart';
@@ -22,9 +25,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int unitPrice=0;
+  int unitPrice = 0;
   int _cartItemCount = 1;
   Product _product = Product();
+  int _currentIndex = 0;
 
   final _previews = [Images.PREVIEW_1, Images.PREVIEW_2, Images.PREVIEW_3];
 
@@ -41,7 +45,7 @@ class _HomeState extends State<Home> {
     });
   }
 
-  String formatPrice(){
+  String formatPrice() {
     return NumberFormat.simpleCurrency().format(_product.price);
   }
 
@@ -51,8 +55,11 @@ class _HomeState extends State<Home> {
 
     final _buyBtn = GestureDetector(
       onTap: _buyItem,
-      child: BuyNowButton(
-        btnType: BuyBtnType.PRIMARY,
+      child: Hero(
+        tag: 'buyNow',
+        child: BuyNowButton(
+          btnType: BuyBtnType.PRIMARY,
+        ),
       ),
     );
 
@@ -80,6 +87,11 @@ class _HomeState extends State<Home> {
             size: SizeConfig.scaledWidth(7)),
       ),
       autoplay: true,
+      onIndexChanged: (index) {
+        setState(() {
+          _currentIndex = index;
+        });
+      },
       // control: SwiperControl(),
     );
 
@@ -170,17 +182,26 @@ class _HomeState extends State<Home> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   SpecificationBadge(
-                    name: 'km/h',
-                    value: _product.maxSpeed,
+                    name: _currentIndex == 0
+                        ? 'km/h'
+                        : _currentIndex == 1 ? 'Watts' : 'Hours',
+                    value: _currentIndex == 0
+                        ? _product.maxSpeed
+                        : _currentIndex == 1
+                            ? _product.power
+                            : _product.chargeTime,
                     badgeType: BadgeType.OUTLINE,
                     height: SizeConfig.scaledHeight(100),
                   ),
                   SizedBox(height: SizeConfig.scaledHeight(15)),
-                  SpecificationBadge(
-                    name: 'Miles range',
-                    value: _product.range,
-                    badgeType: BadgeType.OUTLINE,
-                    height: SizeConfig.scaledHeight(100),
+                  Visibility(
+                    visible: _currentIndex <= 1,
+                    child: SpecificationBadge(
+                      name: _currentIndex == 0 ? 'Miles range' : 'Kilogram',
+                      value: _currentIndex == 0 ? _product.range : _product.weight,
+                      badgeType: BadgeType.OUTLINE,
+                      height: SizeConfig.scaledHeight(100),
+                    ),
                   ),
                 ],
               ),
@@ -244,11 +265,20 @@ class _HomeState extends State<Home> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(
+                    Navigator.push(
                       context,
-                      Router.detailsRoute,
-                      arguments: [_cartItemCount, _product],
+                      FadePageRoute(
+                        widget: ProductDetails(
+                          cartCount: _cartItemCount,
+                          product: _product,
+                        ),
+                      ),
                     );
+                    // Navigator.pushNamed(
+                    //   context,
+                    //   Router.detailsRoute,
+                    //   arguments: [_cartItemCount, _product],
+                    // );
                   },
                   child: Container(
                     margin: EdgeInsets.symmetric(
